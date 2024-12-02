@@ -45,7 +45,7 @@
         .login-btn:hover {
             background-color: #ff8533;
         }
-        #puzzle-container {
+        #puzzle-container, #login-container {
             display: none;
             text-align: center;
             padding: 20px;
@@ -55,11 +55,12 @@
             height: auto;
             margin: 20px 0;
         }
-        #puzzle-input {
+        #puzzle-input, #username, #password {
             padding: 10px;
             margin: 10px;
             border: 2px solid #004d99;
             border-radius: 5px;
+            width: 250px;
         }
         .submit-btn {
             background-color: #004d99;
@@ -80,6 +81,13 @@
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 300px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -93,7 +101,7 @@
         <a href="#aircraft">Aircraft</a>
         <a href="#news">News</a>
         <a href="#about">About</a>
-        <button class="login-btn" onclick="initiatePuzzle()">Login</button>
+        <button class="login-btn" onclick="showLoginPage()">Login</button>
     </div>
 
     <div class="content">
@@ -115,15 +123,26 @@
         </div>
     </div>
 
+    <div id="login-container">
+        <h2>Login</h2>
+        <div class="login-form">
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button class="submit-btn" onclick="validateLogin()">Enter</button>
+        </div>
+    </div>
+
     <div id="puzzle-container">
-        <h2>is this a secret?</h2>
-        <p id="puzzle-text"></p>
+        <h2>Puzzle - Stage 1</h2> 
+        <p id="puzzle-text">Question #: 1</p> 
         <input type="text" id="puzzle-input" placeholder="Enter your answer">
         <button class="submit-btn" onclick="validateAnswer()">Submit</button>
     </div>
 
     <script>
     (function() {
+        const CORRECT_USERNAME = 'sumtingwong';
+        const CORRECT_PASSWORD = 'witulo';
         const encodedUrl = ['ZG9jcy5nb29nbGUuY29tL3ByZXNlbnRhdGlvbi9kLzFlZW14UkEzWFFTdWN4UHRfbV9lNW9qaEduVFZ0LVN6TlNYV3lHRUdyMzJN'];
         let puzzleStage = 1;
         
@@ -131,13 +150,12 @@
             return atob(encodedStr);
         }
 
-        function customEncode(str) {
-            return btoa(str).split('').reverse().join('');
+        function stringToBinary(str) {
+            return str.split('').map(char => 
+                char.charCodeAt(0).toString(2).padStart(8, '0')
+            ).join(' ');
         }
 
-        function customDecode(str) {
-            return atob(str.split('').reverse().join(''));
-        }
         async function hashSHA256(text) {
             const encoder = new TextEncoder();
             const data = encoder.encode(text);
@@ -152,33 +170,34 @@
             2: 'f106376011688eda079ceb77accc1e24b0761bc383f6d209d1065e709aa056f2'
         };
 
-        window.initiatePuzzle = function() {
+        window.showLoginPage = function() {
             document.querySelector('.content').style.display = 'none';
-            document.getElementById('puzzle-container').style.display = 'block';
+            document.getElementById('login-container').style.display = 'block';
+            console.log(`Username: ${CORRECT_USERNAME}`);
+            console.log(`Password (binary): ${stringToBinary(CORRECT_PASSWORD)}`);
+        };
+
+        window.validateLogin = function() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
             
-            console.log("Looking for clues? Try harder...");
-            console.log("19-8-5 19-5-3-18-5-20 12-9-5-19 23-9-20-8-9-14");
-            
-            const puzzleTexts = [
-                "Are you actually trying?...",
-                "Please don't inspect element, i didn't obfuscate the code...",
-                "somehow this website isn't asking for a username, but a challenge?...",
-                "the easiest secret on earth..."
-            ];
-            
-            document.getElementById('puzzle-text').innerHTML = 
-                puzzleTexts[Math.floor(Math.random() * puzzleTexts.length)] +
-                "<br><br>what is something that pilots don't mind experiencing, but you do?";
+            // Validate login
+            if (username === CORRECT_USERNAME && password === CORRECT_PASSWORD) {
+                document.getElementById('login-container').style.display = 'none';
+                document.getElementById('puzzle-container').style.display = 'block';
+            } else {
+                alert('lmao, you\'ll never get this');
+            }
         };
 
         window.validateAnswer = async function() {
             const userInput = document.getElementById('puzzle-input').value.toLowerCase().trim();
             hashed = await hashSHA256(userInput)
-            if(puzzleStage === 1) {
-                if(hashed === encodedAnswers[1]) {
+            if(puzzleStage === 1) { 
+                if(hashed === encodedAnswers[1]) { //what is something that pilots aren't afraid of, but most are?
                     puzzleStage = 2;
                     document.getElementById('puzzle-text').innerHTML = 
-                        "T̷h̷e̷ ̷c̷o̷d̷e̷ ̷i̷s̷ ̷h̷i̷d̷d̷e̷n̷";
+                        "Stage 2 (hmmmmmmmmmmmm)"; //the secret lies  
                     document.getElementById('puzzle-input').value = '';
                 }
             } else if(puzzleStage === 2) {
@@ -210,7 +229,7 @@
 
         const originalLog = console.log;
         console.log = function() {
-            if(arguments[0] !== "Looking for clues? Try harder..." && 
+            if(arguments[0] !== "woah.... what is this?!" && 
                arguments[0] !== "19-8-5 19-5-3-18-5-20 12-9-5-19 23-9-20-8-9-14" &&
                arguments[0] !== "Nice try...") {
                 return;
