@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviation Enthusiasts Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            user-select: none;
+        }
+        .header {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .nav {
+            background-color: #004d99;
+            padding: 10px;
+            text-align: center;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .content {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .login-btn {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .login-btn:hover {
+            background-color: #ff8533;
+        }
+        #puzzle-container {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        .plane-image {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+        #puzzle-input {
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid #004d99;
+            border-radius: 5px;
+        }
+        .submit-btn {
+            background-color: #004d99;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #0066cc;
+        }
+        .feature-box {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Aviation Enthusiasts Hub</h1>
+        <p>Your Gateway to the World of Aviation</p>
+    </div>
+
+    <div class="nav">
+        <a href="#home">Home</a>
+        <a href="#aircraft">Aircraft</a>
+        <a href="#news">News</a>
+        <a href="#about">About</a>
+        <button class="login-btn" onclick="startPuzzle()">Login</button>
+    </div>
+
+    <div class="content">
+        <div class="feature-box">
+            <h2>very aviation site (trust)</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Airbus_A320-214%2C_Airbus_Industrie_JP7617615.jpg" class="plane-image" alt="Modern Aircraft">
+            <p>Discover the fascinating world of aviation, from historical aircraft to modern marvels. Our community of enthusiasts shares knowledge, experiences, and passion for flight.</p>
+        </div>
+        
+        <div class="feature-box">
+            <h3>Latest Aviation News</h3>
+            <ul>
+                <li>New Generation of Electric Aircraft Takes Flight</li>
+                <li>Historic Restoration Project Completed</li>
+                <li>Revolutionary Propulsion System Unveiled</li>
+                <li>Advanced Navigation Systems Implementation</li>
+                <li>Sustainable Aviation Fuel Developments</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="puzzle-container">
+        <h2>is this a secret?</h2>
+        <p id="puzzle-text"></p>
+        <input type="text" id="puzzle-input" placeholder="Enter your answer">
+        <button class="submit-btn" onclick="checkAnswer()">Submit</button>
+    </div>
+
+    <script>
+    (function() {
+        const _0x2e4d = ['ZG9jcy5nb29nbGUuY29tL3ByZXNlbnRhdGlvbi9kLzFlZW14UkEzWFFTdWN4UHRfbV9lNW9qaEduVFZ0LVN6TlNYV3lHRUdyMzJN'];
+        let _0x1f3d = 1;
+        
+        function _0x4f8d(_0x3f4a) {
+            return atob(_0x3f4a);
+        }
+
+        window.startPuzzle = function() {
+            document.querySelector('.content').style.display = 'none';
+            document.getElementById('puzzle-container').style.display = 'block';
+            
+            console.log("Looking for clues? Try harder...");
+            console.log("19-8-5 19-5-3-18-5-20 12-9-5-19 23-9-20-8-9-14");
+            
+            const puzzleTexts = [
+                "The sky holds many secrets...",
+                "What goes up must come down...",
+                "Between the clouds lies truth...",
+                "In the realm of flight, fear guides the way..."
+            ];
+            
+            document.getElementById('puzzle-text').innerHTML = 
+                puzzleTexts[Math.floor(Math.random() * puzzleTexts.length)] +
+                "<br><br>First challenge: What do pilots fear most in the sky?";
+        };
+
+        window.checkAnswer = function() {
+            const input = document.getElementById('puzzle-input').value.toLowerCase().trim();
+            
+            if(_0x1f3d === 1) {
+                if(input === 'turbulence') {
+                    _0x1f3d = 2;
+                    document.getElementById('puzzle-text').innerHTML = 
+                        "T̷h̷e̷ ̷c̷o̷d̷e̷ ̷i̷s̷ ̷h̷i̷d̷d̷e̷n̷";
+                    document.getElementById('puzzle-input').value = '';
+                }
+            } else if(_0x1f3d === 2) {
+                if(input === 'within') {
+                    const _0x5f1c = _0x4f8d(_0x2e4d[0]);
+                    setTimeout(() => {
+                        window.location.href = _0x5f1c;
+                    }, 500);
+                }
+            }
+        };
+
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', function(e) {
+            if(e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 73)) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        setInterval(() => {
+            const start = performance.now();
+            debugger;
+            const end = performance.now();
+            if(end - start > 100) {
+                _0x1f3d = 1;
+            }
+        }, 1000);
+
+        const _0x7d9f = console.log;
+        console.log = function() {
+            if(arguments[0] !== "Looking for clues? Try harder..." && 
+               arguments[0] !== "19-8-5 19-5-3-18-5-20 12-9-5-19 23-9-20-8-9-14" &&
+               arguments[0] !== "Nice try...") {
+                return;
+            }
+            _0x7d9f.apply(console, arguments);
+        };
+
+    })();
+    </script>
+</body>
+</html>
