@@ -138,10 +138,18 @@
         function customDecode(str) {
             return atob(str.split('').reverse().join(''));
         }
+        async function hashSHA256(text) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(text);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            return hashHex;
+        }
 
         const encodedAnswers = {
-            1: customEncode('turbulence'),
-            2: customEncode('within')
+            1: "5800768b32a54c54c82b8db4629339e8f830efdc3591fab146297ee1aab2bf8a",
+            2: 'f106376011688eda079ceb77accc1e24b0761bc383f6d209d1065e709aa056f2'
         };
 
         window.initiatePuzzle = function() {
@@ -163,18 +171,18 @@
                 "<br><br>what is something that pilots don't mind experiencing, but you do?";
         };
 
-        window.validateAnswer = function() {
+        window.validateAnswer = async function() {
             const userInput = document.getElementById('puzzle-input').value.toLowerCase().trim();
-            
+            hashed = await hashSHA256(userInput)
             if(puzzleStage === 1) {
-                if(userInput === customDecode(encodedAnswers[1])) {
+                if(hashed === encodedAnswers[1]) {
                     puzzleStage = 2;
                     document.getElementById('puzzle-text').innerHTML = 
                         "T̷h̷e̷ ̷c̷o̷d̷e̷ ̷i̷s̷ ̷h̷i̷d̷d̷e̷n̷";
                     document.getElementById('puzzle-input').value = '';
                 }
             } else if(puzzleStage === 2) {
-                if(userInput === customDecode(encodedAnswers[2])) {
+                if(hashed === encodedAnswers[2]) {
                     const redirectUrl = decodeBase64(encodedUrl[0]);
                     setTimeout(() => {
                         window.location.href = redirectUrl;
