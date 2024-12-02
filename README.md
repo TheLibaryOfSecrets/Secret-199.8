@@ -4,4 +4,4 @@ https://docs.google.com/presentation/d/1mE0PqStTtkX9MWuV3c0sKUVJfDyGA_xI2yfl0EsS
 
 
 Good luck and have fun!
-These secrets utilise many of the hidden functionalities in Google Slidies
+These secrets utilise many of the hidden functionalities in Google Slides
