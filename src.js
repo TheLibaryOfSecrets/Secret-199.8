@@ -30,8 +30,6 @@ const encodedAnswers = {
 window.showLoginPage = function() {
     document.querySelector('.content').style.display = 'none';
     document.getElementById('login-container').style.display = 'block';
-    console.log(`Username: ${CORRECT_USERNAME}`);
-    console.log(`Password (binary): ${stringToBinary(CORRECT_PASSWORD)}`);
 };
 
 window.validateLogin = async function() {
