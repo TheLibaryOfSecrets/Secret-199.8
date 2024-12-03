@@ -77,7 +77,6 @@ document.addEventListener('keydown', function(e) {
 
 setInterval(() => {
     const start = performance.now();
-    debugger;
     const end = performance.now();
     if(end - start > 100) {
         puzzleStage = 1;
