@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+    user-select: none;
+}
+.header {
+    background-color: #003366;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+.nav {
+    background-color: #004d99;
+    padding: 20px;
+    text-align: center;
+}
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+.content {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.login-btn {
+    background-color: #ff6600;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.login-btn:hover {
+    background-color: #ff8533;
+}
+#puzzle-container {
+    display: none;
+    text-align: center;
+    padding: 20px;
+}
+
+#login-container {
+    text-align: center;
+    padding: 20px;
+}
+.plane-image {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+#puzzle-input, #username, #password {
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid #004d99;
+    border-radius: 5px;
+    width: 250px;
+}
+.submit-btn {
+    background-color: #004d99;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.submit-btn:hover {
+    background-color: #0066cc;
+}
+.feature-box {
+    background-color: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 300px;
+    margin: 0 auto;
+}
