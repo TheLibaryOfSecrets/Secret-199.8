@@ -1,6 +1,6 @@
 const CORRECT_USERNAME = 'fcb2d2bd68defbbb80b7662b17764db452c941776df0a6e7b378b7eda0d452df';
 const CORRECT_PASSWORD = 'b6ccc7403d52911633af5a4376e410f781709fee33a12afba2ac9cc60c35cf0c';
-const encodedUrl = ['MVZMYUhob0tyS2JaUFcxM1BNYWg3T3h3c3REcDVUXzcxd0Y3YjZKNWxaYk0vZWRpdD91c3A9c2hhcmluZw=='];
+const encodedUrl = ['MVZMYUhob0tyS2JaUFcxM1BNYWg3T3h3c3REcDVUXzcxd0Y3YjZKNWxaYk0uaHRtbA=='];
 let puzzleStage = 1;
 
 function decodeBase64(encodedStr) {
