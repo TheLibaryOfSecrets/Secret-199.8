@@ -1,5 +1,6 @@
 body {
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
     margin: 0;
     padding: 0;
     background-color: #f0f8ff;
