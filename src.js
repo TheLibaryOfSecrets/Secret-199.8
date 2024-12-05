@@ -52,7 +52,7 @@ window.validateAnswer = async function() {
         if(hashed === encodedAnswers[1]) { //what is something that pilots aren't afraid of, but most are?
             puzzleStage = 2;
             document.getElementById('puzzle-text').innerHTML = 
-                "Stage 2 (hmmmmmmmmmmmm)"; //the secret lies  
+                "Stage 2 (hmmmmmmmmmmmm)"; //the secret lies _ _ _ _ _ _  
             document.getElementById('puzzle-input').value = '';
         }
     } else if(puzzleStage === 2) {
