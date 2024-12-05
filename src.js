@@ -91,4 +91,4 @@ console.log = function() {
     originalLog.apply(console, arguments);
 };
 
-document.cookie = "19-8-5 19-5-3-18-5-20 12-9-5-19 23-9-20-8-9-14=value; that's the answer to question 2, btw. path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+document.cookie = "19-8-5 19-5-3-18-5-20 12-9-5-19 23-9-20-8-9-14=value; that's the answer to question 2, btw. ;path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT";
